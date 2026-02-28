@@ -707,7 +707,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🔍 信頼性評価付きAIリサーチ")
+st.title("AIリサーチ")
 st.caption("情報の信頼性をAIが自動評価し、高品質な情報のみを使用したリサーチを実行")
 
 # チャット履歴の初期化
