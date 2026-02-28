@@ -1,5 +1,4 @@
 import streamlit as st
-import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated, List, Literal, Dict, Any
@@ -13,6 +12,9 @@ import time
 import re
 from urllib.parse import urlparse
 
+# Streamlit Cloud用: ファイル監視を無効化
+os.environ["STREAMLIT_SERVER_WATCHER_TYPE"] = "none"
+
 # .envファイルから環境変数を読み込み
 load_dotenv()
 
@@ -21,7 +23,8 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 tavily_api_key = os.getenv("TAVILY_API_KEY")
 
 if not gemini_api_key:
-    st.error("GEMINI_API_KEYが.envファイルに設定されていません。")
+    st.error("GEMINI_API_KEYが設定されていません。")
+    st.info("ローカル: .envファイルに設定\nStreamlit Cloud: Settings → Secrets で設定してください")
     st.stop()
 
 if not tavily_api_key:
